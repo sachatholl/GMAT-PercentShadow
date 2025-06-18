@@ -45,7 +45,7 @@ This GMAT simulation demonstrates the use of the custom `IsSunLitGMF.gmf` functi
 
 ## Planed improvements:
 
-1. Compute sin rays inscidence angle
+1. Compute inscidenct sun ray angle
 2. Scaled incident solar flux effective power
 
 
