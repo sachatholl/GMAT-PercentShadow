@@ -1,6 +1,6 @@
-# PercentShadow Algorithm for GMAT
+# PercentShadow Algorithm for NASA GMAT2025a Orbit Simulator
 
-This repository provides a custom **GMAT UserFunction (GMF)** implementation of the **PercentShadow algorithm**, based on the standard method described by Montenbruck & Gill (2000). The function computes the precise percentage of sunlight received by a spacecraft, taking into account partial and total eclipses caused by an occulting body (e.g. Earth or Moon).
+This repository provides a custom **GMAT UserFunction (GMF)** implementation of the **PercentShadow algorithm**, based on the standard method described by Montenbruck & Gill (2000). The function computes the precise percentage of sunlight received by a spacecraft, taking into account partial and total eclipses caused by an occulting body (e.g. Earth or Moon). The function has been developped and tested on GMAT2025a. The function might also work on previous GMAT versions, but has not been tested!
 
 ## What the Code Does
 
