@@ -42,10 +42,18 @@ The algorithm:
 
 This GMAT simulation demonstrates the use of the custom `IsSunLitGMF.gmf` function within a mission sequence to dynamically assess spacecraft illumination conditions during propagation. As the satellite propagates in its orbit, the script calculates elevation angles, azimuths, and the percent sunlight received (`PercentShadow`) at each step. The function determines whether the spacecraft is fully illuminated, partially shadowed (penumbra), or fully eclipsed (umbra) by analyzing the apparent positions and sizes of the Sun and occulting body.
 
+
+## Planed improvements:
+
+1. Compute sin rays inscidence angle
+2. Scaled incident solar flux effective power
+
+
 ## Presentation
 
 I included a powerpoint presentation (GMAT -PercentShadow_Algorithm_Presentation.pptx) that explains a littlebit more detailed the mechanism of the percent shadow algorithm.
 
+   
 Post tenevras spero lucem,
 Sacha Tholl
 
