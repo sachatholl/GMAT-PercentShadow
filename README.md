@@ -36,9 +36,11 @@ The algorithm:
    ```
 5. Use `PercentShadow` in plots or reports for eclipse and power analysis.
 
-## Example Simulation
+**Please include both `IsSunLitGMF.gmf` and `PercentShadowExample.script` in the `script` folder of your GMAT2025a installation. This ensures that GMAT can locate and execute the custom user function together with the example mission script without path issues.**
 
-This GMAT simulation demonstrates the use of the custom `IsSunLitGMF.gmf` function within a mission sequence to dynamically assess spacecraft illumination conditions during propagation. As the satellite propagates in its orbit, the script calculates elevation angles, azimuths, and the percent sunlight received (`PercentShadow`) at each step. The function determines whether the spacecraft is fully illuminated, partially shadowed (penumbra), or fully eclipsed (umbra) by analyzing the apparent positions and sizes of the Sun and the occulting body. This simulation supports power budgeting, thermal analysis, and mission planning.
+## Example Simulation: PercentShadowExample.script - 
+
+This GMAT simulation demonstrates the use of the custom `IsSunLitGMF.gmf` function within a mission sequence to dynamically assess spacecraft illumination conditions during propagation. As the satellite propagates in its orbit, the script calculates elevation angles, azimuths, and the percent sunlight received (`PercentShadow`) at each step. The function determines whether the spacecraft is fully illuminated, partially shadowed (penumbra), or fully eclipsed (umbra) by analyzing the apparent positions and sizes of the Sun and occulting body.
 
 ## License
 
