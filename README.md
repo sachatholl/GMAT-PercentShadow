@@ -29,7 +29,7 @@ The algorithm:
 4. Example call in GMAT:
    ```
    [IsSunLitResult, PercentShadow] = IsSunLitGMF(
-       OTTER.EarthMJ2000Eq.X, OTTER.EarthMJ2000Eq.Y, OTTER.EarthMJ2000Eq.Z,
+       MySat.EarthMJ2000Eq.X, MySat.EarthMJ2000Eq.Y, MySat.EarthMJ2000Eq.Z,
        Sun.EarthMJ2000Eq.X, Sun.EarthMJ2000Eq.Y, Sun.EarthMJ2000Eq.Z,
        Earth.EarthMJ2000Eq.X, Earth.EarthMJ2000Eq.Y, Earth.EarthMJ2000Eq.Z,
        6378.137);
