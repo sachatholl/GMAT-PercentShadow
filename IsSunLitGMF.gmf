@@ -1,0 +1,104 @@
+% ============================================================
+% IsSunLitGMF: GMAT Function for Percent Shadow Calculation
+% using Algorythm of Montenbruck, O., & Gill, E. (2000). 
+% Satellite Orbits: Models, Methods and Applications. Springer. - pages 80 to 83
+%            Adapted for GMAT June 2025 by Sacha Tholl
+%
+%                  "Post tenebras spero lucem"
+%
+% This function computes the percentage of sunlight (0 to 100)
+% received by a spacecraft based on the apparent overlap 
+% between the Sun and an occulting body (e.g. Earth or Moon).
+%
+% Inputs:
+%   r_sat_x, r_sat_y, r_sat_z   : Spacecraft position components (km)
+%   r_sun_x, r_sun_y, r_sun_z   : Sun position components (km)
+%   r_occ_x, r_occ_y, r_occ_z   : Occulting body position components (km)
+%   R_occ                       : Radius of occulting body (km)
+%
+% Output:
+%   IsSunLit                    : Binary Eclipse Detection  (0 = no, it's not sun lit,
+%                                                            1 = yes, it's sun lit)
+%   PercentShadow               : Percent of sunlight (0% = full eclipse to 100% = full illuminated)
+%
+% Usage:
+%   - Pass current spacecraft, Sun, and occulting body positions.
+%   - Pass the occulting body's radius.
+%   - Call the function at each time step to compute sunlight percentage.
+%   - Suitable for plotting in XYPlot or writing to ReportFile.
+%
+% Example:
+%   [IsSunLit, PercentShadow] = IsSunLitGMF(OTTER.EarthMJ2000Eq.X, OTTER.EarthMJ2000Eq.Y, OTTER.EarthMJ2000Eq.Z, 
+%                                                 Sun.EarthMJ2000Eq.X, Sun.EarthMJ2000Eq.Y, Sun.EarthMJ2000Eq.Z, 
+%                                                 Earth.EarthMJ2000Eq.X, Earth.EarthMJ2000Eq.Y, Earth.EarthMJ2000Eq.Z, 6378.137);
+% ============================================================
+
+function [IsSunLit, PercentShadow] = IsSunLitGMF(    r_sat_x, r_sat_y, r_sat_z, r_sun_x, r_sun_y, r_sun_z, r_occ_x, r_occ_y, r_occ_z, R_occ)
+
+Create Variable s_x s_y s_z;
+Create Variable s_mag;
+Create Variable s_sun_x s_sun_y s_sun_z;
+Create Variable s_sun_mag;
+Create Variable R_sun;
+Create Variable R_sun_apparent R_occ_apparent;
+Create Variable D_apparent dotp;
+Create Variable IsSunLit PercentShadow;
+Create Variable sum_R_apparent diff_R_apparent;
+Create Variable min_R_apparent;
+
+R_sun = 695700.0; % km
+
+BeginMissionSequence;
+
+s_x = r_sat_x - r_occ_x;
+s_y = r_sat_y - r_occ_y;
+s_z = r_sat_z - r_occ_z;
+s_mag = sqrt(s_x^2 + s_y^2 + s_z^2);
+
+s_sun_x = r_sun_x - r_occ_x;
+s_sun_y = r_sun_y - r_occ_y;
+s_sun_z = r_sun_z - r_occ_z;
+s_sun_mag = sqrt(s_sun_x^2 + s_sun_y^2 + s_sun_z^2);
+
+R_sun_apparent = asin(R_sun / sqrt((r_sun_x - r_sat_x)^2 + (r_sun_y - r_sat_y)^2 + (r_sun_z - r_sat_z)^2));
+R_occ_apparent = asin(R_occ / s_mag);
+
+dotp = (s_x * (r_sun_x - r_sat_x) + s_y * (r_sun_y - r_sat_y) + s_z * (r_sun_z - r_sat_z)) / (s_mag * sqrt((r_sun_x - r_sat_x)^2 + (r_sun_y - r_sat_y)^2 + (r_sun_z - r_sat_z)^2));
+D_apparent = acos(dotp);
+
+sum_R_apparent = R_sun_apparent + R_occ_apparent;
+diff_R_apparent = abs(R_occ_apparent - R_sun_apparent);
+
+If R_sun_apparent <= R_occ_apparent
+    min_R_apparent = R_sun_apparent;
+Else
+    min_R_apparent = R_occ_apparent;
+EndIf;
+
+If D_apparent <= sum_R_apparent
+    IsSunLit = 1; % volle Beleuchtung
+Else
+    If D_apparent >= diff_R_apparent
+        If R_occ_apparent >= R_sun_apparent
+            IsSunLit = 0;  % volle Finsternis
+        Else
+            IsSunLit = 1; % Sonne größer als Occulter -> immer beleuchtet
+        EndIf;
+    Else
+        IsSunLit = 1 * (D_apparent - diff_R_apparent) / (2 * min_R_apparent);
+        If IsSunLit < 0
+            IsSunLit = 0;
+        EndIf;
+        If IsSunLit > 1
+            IsSunLit = 1;
+        EndIf;
+    EndIf;
+EndIf;
+
+PercentShadow = 100 * (sum_R_apparent - D_apparent) / (2 * min_R_apparent);
+If PercentShadow < 0
+    PercentShadow = 0;
+EndIf;
+If PercentShadow > 100
+    PercentShadow = 100;
+EndIf;

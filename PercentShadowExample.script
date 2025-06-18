@@ -1,0 +1,508 @@
+%General Mission Analysis Tool(GMAT) Script
+%Created: 2025-06-18 11:23:42
+
+
+%----------------------------------------
+%---------- User-Modified Default Celestial Bodies
+%----------------------------------------
+
+Earth.TextureMapFileName = '..\data\graphics\texture\ModifiedBlueMarble.jpg';
+%----------------------------------------
+%---------- Spacecraft
+%----------------------------------------
+
+Create Spacecraft MySat;
+MySat.DateFormat = UTCGregorian;
+MySat.Epoch = '01 Oct 2025 10:00:00.000';
+MySat.CoordinateSystem = EarthMJ2000Eq;
+MySat.DisplayStateType = Keplerian;
+MySat.SMA = 6888.140000000006;
+MySat.ECC = 1.596244268514677e-15;
+MySat.INC = 97.44400000000002;
+MySat.RAAN = 13.01779999999999;
+MySat.AOP = 0;
+MySat.TA = 0;
+MySat.DryMass = 6.8;
+MySat.Cd = 2.2;
+MySat.Cr = 1.8;
+MySat.DragArea = 0.015;
+MySat.SRPArea = 0.03;
+MySat.SPADDragScaleFactor = 1;
+MySat.SPADSRPScaleFactor = 1;
+MySat.AtmosDensityScaleFactor = 1;
+MySat.ExtendedMassPropertiesModel = 'None';
+%OTTER.EphemerisName = 'C:\TLE\Orbitron\Tle\Stations.txt';
+MySat.NAIFId = -10000001;
+MySat.NAIFIdReferenceFrame = -9000001;
+MySat.OrbitColor = Green;
+MySat.TargetColor = LightGray;
+MySat.OrbitErrorCovariance = [ 1e+70 0 0 0 0 0 ; 0 1e+70 0 0 0 0 ; 0 0 1e+70 0 0 0 ; 0 0 0 1e+70 0 0 ; 0 0 0 0 1e+70 0 ; 0 0 0 0 0 1e+70 ];
+MySat.CdSigma = 1e+70;
+MySat.CrSigma = 1e+70;
+MySat.Id = 'ISS';
+MySat.Attitude = NadirPointing;
+MySat.SPADSRPInterpolationMethod = Bilinear;
+MySat.SPADSRPScaleFactorSigma = 1e+70;
+MySat.SPADDragInterpolationMethod = Bilinear;
+MySat.SPADDragScaleFactorSigma = 1e+70;
+MySat.AtmosDensityScaleFactorSigma = 1e+70;
+MySat.ModelFile = '..\data\vehicle\models\aura.3ds';
+MySat.ModelOffsetX = 0;
+MySat.ModelOffsetY = 0;
+MySat.ModelOffsetZ = 0;
+MySat.ModelRotationX = 0;
+MySat.ModelRotationY = 0;
+MySat.ModelRotationZ = 0;
+MySat.ModelScale = 1;
+MySat.AttitudeDisplayStateType = 'Quaternion';
+MySat.AttitudeRateDisplayStateType = 'AngularVelocity';
+MySat.EulerAngleSequence = '123';
+MySat.AttitudeReferenceBody = Earth;
+MySat.AttitudeConstraintType = 'Velocity';
+MySat.BodyAlignmentVectorX = 0;
+MySat.BodyAlignmentVectorY = 0;
+MySat.BodyAlignmentVectorZ = 1;
+MySat.BodyConstraintVectorX = 1;
+MySat.BodyConstraintVectorY = 0;
+MySat.BodyConstraintVectorZ = 0;
+
+%----------------------------------------
+%---------- GroundStations
+%----------------------------------------
+
+Create GroundStation BerlinGS;
+BerlinGS.OrbitColor = Thistle;
+BerlinGS.TargetColor = DarkGray;
+BerlinGS.CentralBody = Earth;
+BerlinGS.StateType = Spherical;
+BerlinGS.HorizonReference = Ellipsoid;
+BerlinGS.Location1 = 52.50716463;
+BerlinGS.Location2 = 13.32249871;
+BerlinGS.Location3 = 0;
+BerlinGS.Id = 'TUBerlin';
+BerlinGS.IonosphereModel = 'None';
+BerlinGS.TroposphereModel = 'None';
+BerlinGS.DataSource = 'Constant';
+BerlinGS.Temperature = 295.1;
+BerlinGS.Pressure = 1013.5;
+BerlinGS.Humidity = 55;
+BerlinGS.MinimumElevationAngle = 10;
+
+Create GroundStation SvalbardGS;
+SvalbardGS.OrbitColor = Thistle;
+SvalbardGS.TargetColor = DarkGray;
+SvalbardGS.CentralBody = Earth;
+SvalbardGS.StateType = Spherical;
+SvalbardGS.HorizonReference = Ellipsoid;
+SvalbardGS.Location1 = 78.22875000000001;
+SvalbardGS.Location2 = 15.39964;
+SvalbardGS.Location3 = 0;
+SvalbardGS.Id = 'Svalbard GS';
+SvalbardGS.IonosphereModel = 'None';
+SvalbardGS.TroposphereModel = 'None';
+SvalbardGS.DataSource = 'Constant';
+SvalbardGS.Temperature = 295.1;
+SvalbardGS.Pressure = 1013.5;
+SvalbardGS.Humidity = 55;
+SvalbardGS.MinimumElevationAngle = 7;
+
+Create GroundStation AwaruaGS;
+AwaruaGS.OrbitColor = Thistle;
+AwaruaGS.TargetColor = DarkGray;
+AwaruaGS.CentralBody = Earth;
+AwaruaGS.StateType = Spherical;
+AwaruaGS.HorizonReference = Ellipsoid;
+AwaruaGS.Location1 = -46.53;
+AwaruaGS.Location2 = 168.38;
+AwaruaGS.Location3 = 0;
+AwaruaGS.Id = 'Awarua';
+AwaruaGS.IonosphereModel = 'None';
+AwaruaGS.TroposphereModel = 'None';
+AwaruaGS.DataSource = 'Constant';
+AwaruaGS.Temperature = 295.1;
+AwaruaGS.Pressure = 1013.5;
+AwaruaGS.Humidity = 55;
+AwaruaGS.MinimumElevationAngle = 7;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%----------------------------------------
+%---------- ForceModels
+%----------------------------------------
+
+Create ForceModel InternalODEModel;
+InternalODEModel.CentralBody = Earth;
+InternalODEModel.PrimaryBodies = {Earth};
+InternalODEModel.SRP = On;
+InternalODEModel.RelativisticCorrection = Off;
+InternalODEModel.ErrorControl = RSSStep;
+InternalODEModel.GravityField.Earth.Degree = 70;
+InternalODEModel.GravityField.Earth.Order = 70;
+InternalODEModel.GravityField.Earth.StmLimit = 100;
+InternalODEModel.GravityField.Earth.PotentialFile = 'JGM3.cof';
+InternalODEModel.GravityField.Earth.TideModel = 'SolidAndPole';
+InternalODEModel.SRP.Flux = 1367;
+InternalODEModel.SRP.SRPModel = Spherical;
+InternalODEModel.SRP.Nominal_Sun = 149597870.691;
+InternalODEModel.Drag.AtmosphereModel = MSISE90;
+InternalODEModel.Drag.HistoricWeatherSource = 'ConstantFluxAndGeoMag';
+InternalODEModel.Drag.PredictedWeatherSource = 'ConstantFluxAndGeoMag';
+InternalODEModel.Drag.CSSISpaceWeatherFile = 'SpaceWeather-All-v1.2.txt';
+InternalODEModel.Drag.SchattenFile = 'SchattenPredict.txt';
+InternalODEModel.Drag.F107 = 150;
+InternalODEModel.Drag.F107A = 150;
+InternalODEModel.Drag.MagneticIndex = 3;
+InternalODEModel.Drag.SchattenErrorModel = 'Nominal';
+InternalODEModel.Drag.SchattenTimingModel = 'NominalCycle';
+InternalODEModel.Drag.DragModel = 'Spherical';
+
+%----------------------------------------
+%---------- Propagators
+%----------------------------------------
+
+Create Propagator CubeSatProp;
+CubeSatProp.FM = InternalODEModel;
+CubeSatProp.Type = PrinceDormand78;
+CubeSatProp.InitialStepSize = 60;
+CubeSatProp.Accuracy = 1e-12;
+CubeSatProp.MinStep = 0.001;
+CubeSatProp.MaxStep = 1;
+CubeSatProp.MaxStepAttempts = 50;
+CubeSatProp.StopIfAccuracyIsViolated = true;
+
+%----------------------------------------
+%---------- Coordinate Systems
+%----------------------------------------
+
+Create CoordinateSystem BerlinTopo;
+BerlinTopo.Origin = BerlinGS;
+BerlinTopo.Axes = Topocentric;
+
+Create CoordinateSystem bodycoo;
+bodycoo.Origin = MySat;
+bodycoo.Axes = ObjectReferenced;
+bodycoo.XAxis = R;
+bodycoo.ZAxis = N;
+bodycoo.Primary = MySat;
+bodycoo.Secondary = Earth;
+
+Create CoordinateSystem SvalbardTopo;
+SvalbardTopo.Origin = SvalbardGS;
+SvalbardTopo.Axes = Topocentric;
+
+Create CoordinateSystem AwaruaTopo;
+AwaruaTopo.Origin = AwaruaGS;
+AwaruaTopo.Axes = Topocentric;
+
+%----------------------------------------
+%---------- EventLocators
+%----------------------------------------
+
+Create EclipseLocator EclipseLocator1;
+EclipseLocator1.Spacecraft = MySat;
+EclipseLocator1.Filename = 'EclipseLocator1.txt';
+EclipseLocator1.OccultingBodies = {Earth};
+EclipseLocator1.InputEpochFormat = 'TAIModJulian';
+EclipseLocator1.InitialEpoch = '21545';
+EclipseLocator1.StepSize = 1;
+EclipseLocator1.FinalEpoch = '21545.138';
+EclipseLocator1.UseLightTimeDelay = true;
+EclipseLocator1.UseStellarAberration = true;
+EclipseLocator1.WriteReport = true;
+EclipseLocator1.RunMode = Automatic;
+EclipseLocator1.UseEntireInterval = true;
+EclipseLocator1.EclipseTypes = {'Umbra', 'Penumbra', 'Antumbra'};
+
+Create ContactLocator ContactLocator1;
+ContactLocator1.Target = MySat;
+ContactLocator1.Filename = 'ContactLocator1.txt';
+ContactLocator1.InputEpochFormat = 'TAIModJulian';
+ContactLocator1.InitialEpoch = '21545';
+ContactLocator1.StepSize = 1;
+ContactLocator1.FinalEpoch = '21545.138';
+ContactLocator1.UseLightTimeDelay = true;
+ContactLocator1.UseStellarAberration = true;
+ContactLocator1.WriteReport = true;
+ContactLocator1.RunMode = Automatic;
+ContactLocator1.UseEntireInterval = true;
+ContactLocator1.Observers = {AwaruaGS, SvalbardGS, BerlinGS};
+ContactLocator1.LightTimeDirection = Transmit;
+ContactLocator1.LeftJustified = false;
+ContactLocator1.ReportPrecision = 6;
+ContactLocator1.ReportFormat = 'Legacy';
+ContactLocator1.IntervalStepSize = 0;
+ContactLocator1.ReportTimeFormat = 'UTCGregorian';
+
+%----------------------------------------
+%---------- Subscribers
+%----------------------------------------
+
+Create ReportFile SunReport;
+SunReport.SolverIterations = Current;
+SunReport.UpperLeft = [ 0.01588235294117647 0.02502844141069397 ];
+SunReport.Size = [ 0.8382352941176471 0.7963594994311718 ];
+SunReport.RelativeZOrder = 329;
+SunReport.Maximized = true;
+SunReport.Filename = 'Svalbard_Sun_Report.txt';
+SunReport.Precision = 6;
+%SunReport.Add = {OTTER.ElapsedDays, OTTER.UTCModJulian, OTTER.Earth.Latitude, OTTER.Earth.Longitude, OTTER.Earth.Altitude};
+SunReport.WriteHeaders = true;
+SunReport.LeftJustify = On;
+SunReport.ZeroFill = Off;
+SunReport.FixedWidth = true;
+SunReport.Delimiter = ' ';
+SunReport.ColumnWidth = 20;
+SunReport.WriteReport = true;
+SunReport.AppendToExistingFile = false;
+
+Create GroundTrackPlot GroundTrackPlot1;
+GroundTrackPlot1.SolverIterations = Current;
+GroundTrackPlot1.UpperLeft = [ 0.0167741935483871 0.472127417519909 ];
+GroundTrackPlot1.Size = [ 0.484516129032258 0.5017064846416383 ];
+GroundTrackPlot1.RelativeZOrder = 163;
+GroundTrackPlot1.Maximized = false;
+GroundTrackPlot1.Add = {AwaruaGS, MySat, SvalbardGS, BerlinGS};
+GroundTrackPlot1.DataCollectFrequency = 1;
+GroundTrackPlot1.UpdatePlotFrequency = 50;
+GroundTrackPlot1.NumPointsToRedraw = 0;
+GroundTrackPlot1.ShowPlot = true;
+GroundTrackPlot1.MaxPlotPoints = 20000;
+GroundTrackPlot1.CentralBody = Earth;
+GroundTrackPlot1.TextureMap = 'ModifiedBlueMarble.jpg';
+
+Create XYPlot XYPlot1;
+XYPlot1.SolverIterations = Current;
+XYPlot1.UpperLeft = [ -0.002580645161290323 0 ];
+XYPlot1.Size = [ 0.9941935483870967 0.4778156996587031 ];
+XYPlot1.RelativeZOrder = 159;
+XYPlot1.Maximized = false;
+XYPlot1.XVariable = MySat.ElapsedDays;
+XYPlot1.YVariables = {ElevationBL, ElevationSV, ElevationAW, PercentShadow};
+XYPlot1.ShowGrid = true;
+XYPlot1.ShowPlot = true;
+
+Create OpenFramesInterface OpenFrames1;
+OpenFrames1.SolverIterations = Current;
+OpenFrames1.UpperLeft = [ 0.5051612903225806 0.4687144482366326 ];
+OpenFrames1.Size = [ 0.4754838709677419 0.4937428896473265 ];
+OpenFrames1.RelativeZOrder = 164;
+OpenFrames1.Maximized = false;
+OpenFrames1.Add = {MySat, BerlinGS, SvalbardGS, AwaruaGS, Earth, Sun, Luna};
+OpenFrames1.View = {CoordinateSystemView1};
+OpenFrames1.CoordinateSystem = bodycoo;
+OpenFrames1.DrawObject = [ true true true false true true true ];
+OpenFrames1.DrawTrajectory = [ true false false false false false false ];
+OpenFrames1.DrawAxes = [ true false false false false false false ];
+OpenFrames1.DrawXYPlane = [ false false false false false false false ];
+OpenFrames1.DrawLabel = [ false true true true false false false ];
+OpenFrames1.DrawUsePropLabel = [ false false false false false false false ];
+OpenFrames1.DrawCenterPoint = [ false true true true false false false ];
+OpenFrames1.DrawEndPoints = [ false false false false false false false ];
+OpenFrames1.DrawVelocity = [ false false false false false false false ];
+OpenFrames1.DrawGrid = [ false false false false false false false ];
+OpenFrames1.DrawLineWidth = [ 2 2 2 2 2 2 2 ];
+OpenFrames1.DrawMarkerSize = [ 10 10 10 10 10 10 10 ];
+OpenFrames1.DrawFontSize = [ 14 14 14 14 14 14 14 ];
+OpenFrames1.Axes = Off;
+OpenFrames1.AxesLength = 1;
+OpenFrames1.AxesLabels = Off;
+OpenFrames1.FrameLabel = Off;
+OpenFrames1.XYPlane = Off;
+OpenFrames1.EclipticPlane = Off;
+OpenFrames1.EnableStars = On;
+OpenFrames1.StarCatalog = 'inp_StarsHYGv3.txt';
+OpenFrames1.StarSettings = Monitor;
+OpenFrames1.StarCount = 40000;
+OpenFrames1.MinStarMag = -2;
+OpenFrames1.MaxStarMag = 6;
+OpenFrames1.MinStarPixels = 1;
+OpenFrames1.MaxStarPixels = 10;
+OpenFrames1.MinStarDimRatio = 0.5;
+OpenFrames1.ShowPlot = true;
+OpenFrames1.ShowToolbar = true;
+OpenFrames1.SolverIterLastN = 1;
+OpenFrames1.ShowVR = false;
+OpenFrames1.PlaybackTimeScale = 1;
+OpenFrames1.MultisampleAntiAliasing = On;
+OpenFrames1.MSAASamples = 16;
+OpenFrames1.DrawFontPosition = {'Top-Right', 'Top-Right', 'Top-Right', 'Top-Right', 'Top-Right', 'Top-Right', 'Top-Right'};
+
+%----------------------------------------
+%---------- Functions
+%----------------------------------------
+
+Create GmatFunction IsSunLitGMF;
+IsSunLitGMF.FunctionPath = 'C:\GMAT\scripts\..\scripts\IsSunLitGMF.gmf';
+
+%----------------------------------------
+%---------- Arrays, Variables, Strings
+%----------------------------------------
+Create Variable SunElevation CSBLZ CSBLXY AzimuthBL ElevationBL AzimuthSV ElevationSV CSSVZ CSSVXY IsSunLit;
+Create Variable PercentShadow R_Earth CSAWXY CSAWZ AzimuthAW ElevationAW;
+Create String now format;
+R_Earth = 6378.137; % km
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%----------------------------------------
+%---------- User Objects
+%----------------------------------------
+
+Create OpenFramesView CoordinateSystemView1;
+CoordinateSystemView1.ViewFrame = MySat;
+CoordinateSystemView1.ViewTrajectory = Off;
+CoordinateSystemView1.InertialFrame = Off;
+CoordinateSystemView1.LookAtFrame = MySat;
+CoordinateSystemView1.ShortestAngle = On;
+CoordinateSystemView1.SetDefaultLocation = On;
+CoordinateSystemView1.DefaultEye = [ -0.00568734 -1.09992358 -1.30943598 ];
+CoordinateSystemView1.DefaultCenter = [ -0.24693444 -0.34037064 0.17136871 ];
+CoordinateSystemView1.DefaultUp = [ 0.98880238 0.02846618 0.14649071 ];
+CoordinateSystemView1.SetCurrentLocation = On;
+CoordinateSystemView1.CurrentEye = [ -2707.219925898863 1119.597415877284 -624.1357066791122 ];
+CoordinateSystemView1.CurrentCenter = [ 132.3279278588625 -115.0811298982132 104.2209623465762 ];
+CoordinateSystemView1.CurrentUp = [ 0.3378376253155007 0.240107772804529 -0.9100626332072053 ];
+CoordinateSystemView1.FOVy = 45;
+
+Create OpenFramesVector NewVector1;
+NewVector1.VectorColor = [255 0 0];
+NewVector1.SourceObject = MySat;
+NewVector1.VectorType = Relative Position;
+NewVector1.DestinationObject = BerlinGS;
+NewVector1.VectorLabel = 'DefaultVector';
+NewVector1.VectorLengthType = 'Auto';
+
+Create OpenFramesView CoordinateSystemView2;
+CoordinateSystemView2.ViewFrame = CoordinateSystem;
+CoordinateSystemView2.ViewTrajectory = Off;
+CoordinateSystemView2.InertialFrame = Off;
+CoordinateSystemView2.SetDefaultLocation = Off;
+CoordinateSystemView2.SetCurrentLocation = Off;
+CoordinateSystemView2.FOVy = 45;
+
+Create OpenFramesView EarthView1;
+EarthView1.ViewFrame = Earth;
+EarthView1.ViewTrajectory = Off;
+EarthView1.InertialFrame = Off;
+EarthView1.SetDefaultLocation = Off;
+EarthView1.SetCurrentLocation = Off;
+EarthView1.FOVy = 45;
+
+Create OpenFramesView LunaView1;
+LunaView1.ViewFrame = Luna;
+LunaView1.ViewTrajectory = Off;
+LunaView1.InertialFrame = Off;
+LunaView1.SetDefaultLocation = Off;
+LunaView1.SetCurrentLocation = Off;
+LunaView1.FOVy = 45;
+
+Create OpenFramesView SunView1;
+SunView1.ViewFrame = Sun;
+SunView1.ViewTrajectory = Off;
+SunView1.InertialFrame = Off;
+SunView1.SetDefaultLocation = Off;
+SunView1.SetCurrentLocation = Off;
+SunView1.FOVy = 45;
+
+Create OpenFramesView ISSView1;
+ISSView1.ViewFrame = MySat;
+ISSView1.ViewTrajectory = Off;
+ISSView1.InertialFrame = Off;
+ISSView1.SetDefaultLocation = Off;
+ISSView1.SetCurrentLocation = Off;
+ISSView1.FOVy = 45;
+
+Create OpenFramesView FHASOFView1;
+FHASOFView1.ViewFrame = BerlinGS;
+FHASOFView1.ViewTrajectory = Off;
+FHASOFView1.InertialFrame = Off;
+FHASOFView1.SetDefaultLocation = Off;
+FHASOFView1.SetCurrentLocation = Off;
+FHASOFView1.FOVy = 45;
+
+
+
+
+%----------------------------------------
+%---------- Mission Sequence
+%----------------------------------------
+
+
+
+BeginMissionSequence;
+
+While MySat.ElapsedDays < 1
+   Propagate CubeSatProp(MySat); % {OTTER.ElapsedSecs = 864};
+   %----
+   CSBLZ = MySat.BerlinTopo.Z;
+   CSSVZ = MySat.SvalbardTopo.Z;
+   CSAWZ = MySat.AwaruaTopo.Z;
+   % FHASOF visibility
+   %If CSFHZ > 0.0 | CSSVZ > 0.0
+   CSBLXY = Sqrt(MySat.BerlinTopo.X^2 + MySat.BerlinTopo.Y^2);
+   CSSVXY = Sqrt(MySat.SvalbardTopo.X^2 + MySat.SvalbardTopo.Y^2);
+   CSAWXY = Sqrt(MySat.AwaruaTopo.X^2 + MySat.AwaruaTopo.Y^2);
+   AzimuthSV = Rad2Deg(Atan2(MySat.SvalbardTopo.Y, -MySat.SvalbardTopo.X));
+   AzimuthBL = Rad2Deg(Atan2(MySat.BerlinTopo.Y, -MySat.BerlinTopo.X));
+   AzimuthAW = Rad2Deg(Atan2(MySat.AwaruaTopo.Y, -MySat.AwaruaTopo.X));
+   If AzimuthBL < 0.0
+      AzimuthBL = 360.0 + AzimuthBL;
+   EndIf;
+   If AzimuthSV < 0.0
+      AzimuthSV = 360.0 + AzimuthSV;
+   EndIf;
+   If AzimuthAW < 0.0
+      AzimuthAW = 360.0 + AzimuthAW;
+   EndIf;
+   ElevationBL = Rad2Deg(Atan2(CSBLZ, CSBLXY));
+   ElevationSV = Rad2Deg(Atan2(CSSVZ, CSSVXY));
+   ElevationAW = Rad2Deg(Atan2(CSAWZ, CSAWXY));
+   
+   [IsSunLit, PercentShadow] = IsSunLitGMF(MySat.EarthMJ2000Eq.X, MySat.EarthMJ2000Eq.Y, MySat.EarthMJ2000Eq.Z, Sun.EarthMJ2000Eq.X, Sun.EarthMJ2000Eq.Y, Sun.EarthMJ2000Eq.Z, Earth.EarthMJ2000Eq.X, Earth.EarthMJ2000Eq.Y, Earth.EarthMJ2000Eq.Z, R_Earth);
+   
+   Report SunReport MySat.UTCGregorian MySat.ElapsedSecs MySat.Earth.Latitude MySat.Earth.Longitude ElevationSV ElevationBL ElevationAW PercentShadow;
+%EndIf;
+%----
+EndWhile;
