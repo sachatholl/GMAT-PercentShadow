@@ -34,7 +34,7 @@ The algorithm:
        Earth.EarthMJ2000Eq.X, Earth.EarthMJ2000Eq.Y, Earth.EarthMJ2000Eq.Z,
        6378.137);
    ```
-5. Use `PercentShadow` in plots or reports for eclipse and power analysis.
+5. Use `PercentShadow` in plots or reports for eclipse, thermal, power analysis or analysis for calibration of sensors dependent of ilumination.
 
 **Please include both `IsSunLitGMF.gmf` and `PercentShadowExample.script` in the `script` folder of your GMAT2025a installation. This ensures that GMAT can locate and execute the custom user function together with the example mission script without path issues.**
 
